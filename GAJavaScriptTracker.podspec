@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.license      = { :type => 'doo GmbH', :file => 'LICENSE.txt' }
   s.author             = { "doo" => " info@doo.net" }
   s.platform     = :osx
-  s.source       = { :git => "https://github.com/iiiyu/GAJavaScriptTracker.git", :commit => "db348dca110f8787c8413c1934b6e8d0b91b1f1d" }
+  s.source       = { :git => "https://github.com/iiiyu/GAJavaScriptTracker.git", :tag => s.version.to_s }
   s.source_files  = 'Classes', 'Classes/**/*.{h,m}'
   # s.public_header_files = 'Classes/**/*.h'
   s.resources = "Resources/main.html", "Resources/ga.js"
