@@ -121,10 +121,10 @@
     if(_webviewLoaded) {
         for(id aJSString in _webViewPendingScripts) {
             //run it
-            DLog(@"[JSC] Evaluate JS: %@ %@ %@", aJSString, _webView.customUserAgent, _webView.applicationNameForUserAgent);
+            NSLog(@"[JSC] Evaluate JS: %@ %@ %@", aJSString, _webView.customUserAgent, _webView.applicationNameForUserAgent);
             NSString *result = [_webView stringByEvaluatingJavaScriptFromString:aJSString];
             if (!result) {
-                DLog(@"[JSC] No result returned");
+                NSLog(@"[JSC] No result returned");
             }
         }
         [_webViewPendingScripts removeAllObjects];
@@ -193,7 +193,7 @@
                                      userInfo:nil];
     }
     
-    DLog(@"[JSC] loading library %@...", url.lastPathComponent);
+    NSLog(@"[JSC] loading library %@...", url.lastPathComponent);
     [self runJS:library];  
 }
 
@@ -206,7 +206,7 @@
 #pragma mark -
 
 - (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame {
-    DLog(@"did load webview");
+    NSLog(@"did load webview");
     _webviewLoaded = YES;
 
     if(_webViewPendingScripts.count >= _batchSize) {
@@ -216,16 +216,16 @@
 
 #if DEBUG_WEBVIEW_ENGINE
 - (void)webView:(WebView *)sender runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WebFrame *)frame {
-    DLog(@"[javascript-alert] %@", message);
+    NSLog(@"[javascript-alert] %@", message);
 }
 
 - (NSURLRequest *)webView:(WebView *)sender resource:(id)identifier willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)redirectResponse fromDataSource:(WebDataSource *)dataSource {
-    DLog(@"[request] %@", request);
+    NSLog(@"[request] %@", request);
     return request;
 }
 
 - (void)webView:(WebView *)sender resource:(id)identifier didReceiveResponse:(NSURLResponse *)response fromDataSource:(WebDataSource *)dataSource {
-    DLog(@"[response] %@", response);
+    NSLog(@"[response] %@", response);
 }
 #endif
 
