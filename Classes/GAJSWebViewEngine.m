@@ -7,6 +7,7 @@
 //
 
 #import "GAJSWebViewEngine.h"
+#import "GJSTCommoh.h"
 
 @interface GAJSWebViewEngine ()
 @property(nonatomic, readwrite) WebView *webView;
@@ -121,10 +122,10 @@
     if(_webviewLoaded) {
         for(id aJSString in _webViewPendingScripts) {
             //run it
-            NSLog(@"[JSC] Evaluate JS: %@ %@ %@", aJSString, _webView.customUserAgent, _webView.applicationNameForUserAgent);
+            DLog(@"[JSC] Evaluate JS: %@ %@ %@", aJSString, _webView.customUserAgent, _webView.applicationNameForUserAgent);
             NSString *result = [_webView stringByEvaluatingJavaScriptFromString:aJSString];
             if (!result) {
-                NSLog(@"[JSC] No result returned");
+                DLog(@"[JSC] No result returned");
             }
         }
         [_webViewPendingScripts removeAllObjects];
@@ -193,7 +194,7 @@
                                      userInfo:nil];
     }
     
-    NSLog(@"[JSC] loading library %@...", url.lastPathComponent);
+    DLog(@"[JSC] loading library %@...", url.lastPathComponent);
     [self runJS:library];  
 }
 
@@ -206,7 +207,7 @@
 #pragma mark -
 
 - (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame {
-    NSLog(@"did load webview");
+    DLog(@"did load webview");
     _webviewLoaded = YES;
 
     if(_webViewPendingScripts.count >= _batchSize) {
@@ -216,16 +217,16 @@
 
 #if DEBUG_WEBVIEW_ENGINE
 - (void)webView:(WebView *)sender runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WebFrame *)frame {
-    NSLog(@"[javascript-alert] %@", message);
+    DLog(@"[javascript-alert] %@", message);
 }
 
 - (NSURLRequest *)webView:(WebView *)sender resource:(id)identifier willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)redirectResponse fromDataSource:(WebDataSource *)dataSource {
-    NSLog(@"[request] %@", request);
+    DLog(@"[request] %@", request);
     return request;
 }
 
 - (void)webView:(WebView *)sender resource:(id)identifier didReceiveResponse:(NSURLResponse *)response fromDataSource:(WebDataSource *)dataSource {
-    NSLog(@"[response] %@", response);
+    DLog(@"[response] %@", response);
 }
 #endif
 
