@@ -1,6 +1,7 @@
+._*
+DerivedData
 .DS_Store
-# Xcode
-build/*
+build/
 *.pbxuser
 !default.pbxuser
 *.mode1v3
@@ -11,7 +12,13 @@ build/*
 !default.perspectivev3
 *.xcworkspace
 !default.xcworkspace
-xcuserdata
 profile
+xcuserdata
 *.moved-aside
-DerivedData
+.idea/
+Pods/
+
+# integraion
+integration/github
+integration/tmp
+
