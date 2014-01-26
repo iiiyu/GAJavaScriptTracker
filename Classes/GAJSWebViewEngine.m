@@ -7,7 +7,7 @@
 //
 
 #import "GAJSWebViewEngine.h"
-#import "GJSTCommoh.h"
+#import "GAJSTCommon.h"
 
 @interface GAJSWebViewEngine ()
 @property(nonatomic, readwrite) WebView *webView;

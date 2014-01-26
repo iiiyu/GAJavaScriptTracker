@@ -8,7 +8,7 @@
 
 #import "GAJavaScriptTracker.h"
 #import "GAJSWebViewEngine.h"
-#import "GJSTCommoh.h"
+#import "GAJSTCommon.h"
 
 static NSString* GAEscapeNSString(NSString* value) {
     if (!value) return nil;
